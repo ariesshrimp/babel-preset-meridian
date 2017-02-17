@@ -7,9 +7,6 @@
     "type": "git",
     "url": "git+https://github.com/joefraley/babel-preset-meridian.git"
   },
-  "scripts": {
-    "test": "cd __tests__ && npm test"
-  },
   "keywords": [
     "Babel",
     "Webpack",
