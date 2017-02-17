@@ -1,3 +1,12 @@
+/**
+ * Need this for babel-preset-react,
+ * which exports uncompiled ESModules I guess.
+ */
+const _require = (name) => {
+  const req = require(name)
+  return name['default'] ? name['default'] : name
+}
+
 module.exports = {
   presets: [
     /**
@@ -5,21 +14,21 @@ module.exports = {
      * { modules: false } allows Webpack 2 to conduct treeshaking,
      * but it means that babel will not understand ESModules without Webpack's help
      */
-    [require('babel-preset-latest'), { modules: false }],
+    [_require('babel-preset-latest'), { modules: false }],
 
     /**
      * @see https://www.npmjs.com/package/babel-preset-react
      * Includes strip-flow-type preset
      */
-    require('babel-preset-react')
+    _require('babel-preset-react')
   ],
   plugins: [
     /**
      * @see https://babeljs.io/docs/plugins/syntax-async-functions/#top
      * Both needed for async/await functions
      */
-    require('babel-plugin-transform-async-to-generator'),
-    require('babel-plugin-transform-runtime'),
+    _require('babel-plugin-transform-async-to-generator'),
+    _require('babel-plugin-transform-runtime'),
 
     /**
      * @see https://babeljs.io/docs/plugins/transform-decorators/
@@ -27,7 +36,7 @@ module.exports = {
      * @autobind <--------
      * class Button extends React.Component
      */
-    require('babel-plugin-transform-decorators-legacy'),
+    _require('babel-plugin-transform-decorators-legacy'),
 
     /**
      * @see https://babeljs.io/docs/plugins/transform-class-properties/
@@ -36,7 +45,7 @@ module.exports = {
      *  static propTypes = {...}
      * }
      */
-    require('babel-plugin-transform-class-properties'),
+    _require('babel-plugin-transform-class-properties'),
 
     /**
      * @see https://babeljs.io/docs/plugins/transform-object-rest-spread/
@@ -44,7 +53,7 @@ module.exports = {
      * const props = {a:1, b:2, c:3}
      * <Button {...props} /> // Button.props === {a:1, b:2, c:3}
      */
-    require('babel-plugin-transform-object-rest-spread'),
+    _require('babel-plugin-transform-object-rest-spread'),
 
     /**
      * @see https://webpack.js.org/guides/code-splitting-import/#dynamic-import
@@ -53,6 +62,6 @@ module.exports = {
      *  class Button extends Component {...}
      * })
      */
-    require('babel-plugin-syntax-dynamic-import'),
+    _require('babel-plugin-syntax-dynamic-import')
   ]
 }

@@ -7,7 +7,17 @@
     "type": "git",
     "url": "git+https://github.com/joefraley/babel-preset-meridian.git"
   },
-  "keywords": ["Babel", "Webpack", "Configuration", "Javascript", "Aruba", "Meridian"],
+  "scripts": {
+    "test": "cd __tests__ && npm test"
+  },
+  "keywords": [
+    "Babel",
+    "Webpack",
+    "Configuration",
+    "Javascript",
+    "Aruba",
+    "Meridian"
+  ],
   "author": "Joe Fraley",
   "license": "ISC",
   "bugs": {
@@ -15,12 +25,12 @@
   },
   "homepage": "https://github.com/joefraley/babel-preset-meridian#readme",
   "dependencies": {
+    "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-plugin-transform-async-to-generator": "6.16.0",
     "babel-plugin-transform-class-properties": "6.22.0",
     "babel-plugin-transform-decorators-legacy": "1.3.4",
     "babel-plugin-transform-object-rest-spread": "6.22.0",
     "babel-plugin-transform-runtime": "6.22.0",
-    "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-preset-latest": "6.22.0",
     "babel-preset-react": "6.16.0"
   }
