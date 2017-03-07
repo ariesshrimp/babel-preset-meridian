@@ -14,7 +14,7 @@ module.exports = {
      * { modules: false } allows Webpack 2 to conduct treeshaking,
      * but it means that babel will not understand ESModules without Webpack's help
      */
-    [_require('babel-preset-latest'), { modules: false }],
+    [_require('babel-preset-latest'), { es2015: {modules: false} }],
 
     /**
      * @see https://www.npmjs.com/package/babel-preset-react
