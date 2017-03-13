@@ -3,7 +3,19 @@ Shared babel configuration for Meridian projects.
 
 ![example .babelrc config file](https://www.evernote.com/l/Ae9r5ZO7ZSREnr84uAHaNgaQsCL_XD6ZDV8B/image.png)
 
+## Install
+### If you run babel over your webpack config:
+```bash
+$ npm i -D babel-preset-meridian@git+ssh://git@github.com/joefraley/babel-preset-meridian.git
+```
+
+### If you DON'T run babel over your webpack config:
+```bash
+$ npm i -D babel-preset-meridian@git+ssh://git@github.com/joefraley/babel-preset-meridian.git#legacy
+```
+
 ## Use
+**NOTE: This config won't work without Webpack 2**
 ```json
 // package.json
 {
@@ -21,17 +33,17 @@ Shared babel configuration for Meridian projects.
 ```
 
 That's it!
-**NOTE: This config won't work without Webpack 2**
+
 
 
 The only relevant file is index.js. It contains comments explaining each of the needed presets and plugins. It exports a babel configuration containing all the following:
 
 ## Presets
 
-#### + `['babel-preset-latest', { modules: false }]`
+#### `[babel-preset-latest, { es2015: {modules: false} }]`
 > See https://twitter.com/joseph_fraley/status/832688588445749249
 
-`{ modules: false }` allows Webpack 2 to conduct treeshaking, but it means that babel will not understand ESModules without Webpack's help.
+`{ es2015: {modules: false} }` allows Webpack 2 to conduct treeshaking, but it means that babel will not understand ESModules without Webpack's help.
 ```javascript
 // index.js
 import { debounce } from 'lodash'
@@ -42,7 +54,7 @@ import Webpack from 'webpack' // <--- doesn't work, because webpack itself handl
 const Webpack = require('webpack') // <--- you just gotta do this in files not compiled by webpack that you expect babel to read, for example when using babel-node node_modules/.bin/webpack
 ```
 
-#### + `'babel-preset-react'`
+#### `babel-preset-react`
 > See https://www.npmjs.com/package/babel-preset-react
 
 Makes JSX possible and includes some other junk that Facebook likes (like flow-strip-types).
@@ -53,12 +65,12 @@ const Button = () => <button />
 
 ## Plugins
 
-#### + `'babel-plugin-transform-async-to-generator'  && 'babel-plugin-transform-runtime'`
+#### `babel-plugin-transform-async-to-generator  & babel-plugin-transform-runtime`
 > See https://babeljs.io/docs/plugins/syntax-async-functions/#top
 
 Both needed for async/await functions
 
-#### + `'babel-plugin-transform-decorators-legacy'`
+#### `babel-plugin-transform-decorators-legacy`
 > See https://babeljs.io/docs/plugins/transform-decorators/
 
 Eventually Babel will incorporate this into `babel-preset-latest` and it won't be needed. Just waiting on the final decorators spec.
@@ -70,7 +82,7 @@ import React from 'react'
 class Button extends React.Component {...}
 ```
 
-#### + `'babel-plugin-transform-class-properties'`
+#### `babel-plugin-transform-class-properties`
 > See https://babeljs.io/docs/plugins/transform-class-properties/
 
 ```javascript
@@ -79,7 +91,7 @@ class Button extends React.Component {
 }
 ```
 
-#### `'babel-plugin-transform-object-rest-spread'`
+#### `babel-plugin-transform-object-rest-spread`
 > See https://babeljs.io/docs/plugins/transform-object-rest-spread/
 
 ```javascript
@@ -87,7 +99,7 @@ const props = {a:1, b:2, c:3}
 <Button {...props} /> // Button.props === {a:1, b:2, c:3}
 ```
 
-#### + `'babel-plugin-syntax-dynamic-import'`
+#### `babel-plugin-syntax-dynamic-import`
 > See https://webpack.js.org/guides/code-splitting-import/#dynamic-import
 
 Makes webpacks lazy-load syntax possible. Used for code-splitting through react-router or something like that.
