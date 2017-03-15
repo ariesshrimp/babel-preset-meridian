@@ -2,10 +2,10 @@
  * Need this for babel-preset-react,
  * which exports uncompiled ESModules I guess.
  */
-const _require = (name) => {
-  const req = require(name)
-  return name['default'] ? name['default'] : name
-}
+const _require = name => {
+  const req = require(name);
+  return name['default'] ? name['default'] : name;
+};
 
 module.exports = {
   presets: [
@@ -20,7 +20,7 @@ module.exports = {
      * @see https://www.npmjs.com/package/babel-preset-react
      * Includes strip-flow-type preset
      */
-    _require('babel-preset-react')
+    _require('babel-preset-react'),
   ],
   plugins: [
     /**
@@ -62,7 +62,7 @@ module.exports = {
      *  class Button extends Component {...}
      * })
      */
-    _require('babel-plugin-syntax-dynamic-import')
+    _require('babel-plugin-syntax-dynamic-import'),
 
     /**
      * @see https://babeljs.io/docs/plugins/transform-do-expressions/
@@ -76,6 +76,6 @@ module.exports = {
           }}
         </div>
      */
-    _require('babel-plugin-transform-do-expressions')
-  ]
-}
+    _require('babel-plugin-transform-do-expressions'),
+  ],
+};
