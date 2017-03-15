@@ -63,5 +63,19 @@ module.exports = {
      * })
      */
     _require('babel-plugin-syntax-dynamic-import')
+
+    /**
+     * @see https://babeljs.io/docs/plugins/transform-do-expressions/
+     * makes this possible:
+     * const Component = props =>
+        <div className='myComponent'>
+          {do {
+            if(color === 'blue') { <BlueComponent/>; }
+            else if(color === 'red') { <RedComponent/>; }
+            else if(color === 'green') { <GreenComponent/>; }
+          }}
+        </div>
+     */
+    _require('babel-plugin-transform-do-expressions')
   ]
 }
