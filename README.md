@@ -108,4 +108,18 @@ Makes webpacks lazy-load syntax possible. Used for code-splitting through react-
 import('react').then(({ Component }) => {
   class Button extends Component {...}
 })
+```
 
+#### `babel-plugin-transform-do-expressions`
+> See https://babeljs.io/docs/plugins/transform-do-expressions/
+Makes this possible:
+```javascript
+const Component = props =>
+  <div className='myComponent'>
+    {do {
+      if(color === 'blue') { <BlueComponent/>; }
+      else if(color === 'red') { <RedComponent/>; }
+      else if(color === 'green') { <GreenComponent/>; }
+    }}
+  </div>
+```
