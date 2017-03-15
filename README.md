@@ -111,8 +111,10 @@ import('react').then(({ Component }) => {
 ```
 
 #### `babel-plugin-transform-do-expressions`
-> See https://babeljs.io/docs/plugins/transform-do-expressions/
-Makes this possible:
+> See https://babeljs.io/docs/plugins/transform-do-expressions/  
+
+Makes this possible:  
+
 ```javascript
 const Component = props =>
   <div className='myComponent'>
