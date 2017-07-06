@@ -1,4 +1,6 @@
 # `babel-preset-meridian`
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/joefraley/babel-preset-meridian.svg)](https://greenkeeper.io/)
 Shared babel configuration for Meridian projects.
 
 ![example .babelrc config file](https://www.evernote.com/l/Ae9r5ZO7ZSREnr84uAHaNgaQsCL_XD6ZDV8B/image.png)
